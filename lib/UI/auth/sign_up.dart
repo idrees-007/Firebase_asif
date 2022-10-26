@@ -30,7 +30,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     passwordController.dispose();
     nameController.dispose();
   }
-  @override
   void SignUp(){
     if(_formKey.currentState!.validate()) {
       setState(() {
@@ -53,6 +52,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     }
   }
+  @override
+
 
   Widget build(BuildContext context) {
     return Scaffold(
