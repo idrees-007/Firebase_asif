@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_asif/util/utils.dart';
 import 'add_posts.dart';
 
 import '../login_screen.dart';
@@ -17,6 +18,7 @@ class _PostScreenState extends State<PostScreen> {
   final auth = FirebaseAuth.instance;
   final ref = FirebaseDatabase.instance.ref('post');
   final searchFilter = TextEditingController();
+  final editController = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -96,11 +98,40 @@ class _PostScreenState extends State<PostScreen> {
            */
              Expanded(
                child: FirebaseAnimatedList(query: ref, itemBuilder: ( context,  snapshot,  animation,  index) {
-                final title= Text(snapshot.child('title').value.toString());
+                final title= (snapshot.child('title').value.toString());
                 if(searchFilter.text.isEmpty){
                   return ListTile(
                     title: Text(snapshot.child('title').value.toString()),
                     subtitle: Text(snapshot.child('id').value.toString()),
+                    trailing: PopupMenuButton(
+                      icon: const Icon(Icons.more_vert), itemBuilder: (BuildContext context) => [
+                         PopupMenuItem(
+                            value :1,
+                            child: ListTile (
+                              onTap: (){
+                                Navigator.pop(context);
+                                ShowMyDialog(title , snapshot.child('id').value.toString());
+
+
+                              },
+
+                              leading: Icon(Icons.add),
+                              title: Text('Edit'),
+                            ) ),
+                       PopupMenuItem(
+                          value :1,
+                          child: ListTile (
+                            onTap: (){
+                              Navigator.pop(context);
+                              ref.child(snapshot.child('id').value.toString()).remove();
+                            },
+
+
+                            leading: Icon(Icons.delete),
+                            title: Text('Delete'),
+                          ) )
+                    ],
+                    ),
                   );
                 }
                 else if(title.toString().contains(searchFilter.text.toString())) {
@@ -128,6 +159,41 @@ class _PostScreenState extends State<PostScreen> {
       child: const Icon(Icons.add),
       ),
 
+
+    );
+  }
+  Future<void> ShowMyDialog(String title, String id) async{
+    editController.text= title ;
+    return showDialog(
+        context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('update'),
+        content: Container(
+          child: TextField(
+            controller: editController,
+            decoration: InputDecoration(
+              hintText: 'Enter Your Text',
+              
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text('Cancel')),
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+            ref.child(id).update({
+              'title' : editController.text.toString(),
+            }).then((value) {
+              Utils().ToastMessage('post updated');
+            }).onError((error, stackTrace) {
+              Utils().ToastMessage(error.toString());
+            });
+          }, child: Text('update'))
+        ],
+      );
+    }
 
     );
   }
