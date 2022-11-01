@@ -15,10 +15,6 @@ class Utils {
       textColor: Colors.white,
       fontSize: 16,
 
-
-
-
-
     );
 
   }

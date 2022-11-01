@@ -22,19 +22,19 @@ class _VerifyCodeState extends State<VerifyCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login with phone number'),
+        title: const Text('Login with phone number'),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
               controller: verifyCodeControl,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'enter 6 digit code',
 
               ),
@@ -42,7 +42,7 @@ class _VerifyCodeState extends State<VerifyCode> {
             ),
 
           ),
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
           Padding(
@@ -58,7 +58,7 @@ class _VerifyCodeState extends State<VerifyCode> {
                    smsCode: verifyCodeControl.text.toString());
               try{
               await auth.signInWithCredential(credential);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>PostScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>const PostScreen()));
               }
               catch(e){
                 setState(() {

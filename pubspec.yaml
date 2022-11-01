@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.1.1
   awesome_snackbar_content: ^0.0.8
   toast: ^0.3.0
+  firebase_database: ^10.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

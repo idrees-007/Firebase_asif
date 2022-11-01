@@ -9,14 +9,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
   SplashServices splashScreen = SplashServices();
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     splashScreen.isLogin(context);
 
   }
+  @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(

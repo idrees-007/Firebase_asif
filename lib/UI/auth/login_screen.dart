@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: emailController.text.toString(),
         password: passwordController.text.toString()).then((value) {
           Utils().ToastMessage(value.user!.email.toString());
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>PostScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>const PostScreen()));
           setState(() {
             loading = false;
           });
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -80,12 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         {
                           return 'enter email';
                         }
-                      else
+                      else {
                         return null;
+                      }
                   },
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   TextFormField(
@@ -100,12 +101,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       {
                         return 'enter password';
                       }
-                      else
+                      else {
                         return null;
+                      }
                     },
                   ),
                 ],
-              )), SizedBox(
+              )), const SizedBox(
                 height: 50,
               ),
 
@@ -120,19 +122,19 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Dont have account?'),
+                  const Text('Dont have account?'),
                   TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
-                  } , child: Text('Sign Up'))
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignUpScreen()));
+                  } , child: const Text('Sign Up'))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
               InkWell(
                 onTap:(){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginWithPhone()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginWithPhone()));
                 },
                 child: Container(
                   height: 50,
@@ -143,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.purple,
                     )
                   ),
-                  child: Center(child: Text('Login with phone ')),
+                  child: const Center(child: Text('Login with phone ')),
                 ),
               )
 

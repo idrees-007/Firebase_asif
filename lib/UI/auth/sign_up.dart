@@ -1,4 +1,4 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_asif/UI/auth/login_screen.dart';
 import 'package:flutter_asif/util/utils.dart';
@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
 
-  FirebaseAuth _auth =FirebaseAuth.instance;
+  final FirebaseAuth _auth =FirebaseAuth.instance;
   @override
 
   void dispose() {
@@ -40,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           password: passwordController.text.toString()).then((value){
         setState(() {
           loading= false;
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginScreen()));
         });
 
       }).onError((error, stackTrace) {
@@ -59,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -83,16 +83,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         {
                           return 'enter email';
                         }
-                        else
+                        else {
                           return null;
+                        }
                       },
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
@@ -107,12 +108,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         {
                           return 'enter password';
                         }
-                        else
+                        else {
                           return null;
+                        }
                       },
                     ),
                   ],
-                )), SizedBox(
+                )), const SizedBox(
               height: 50,
             ),
 
@@ -126,10 +128,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Dont have account?'),
+                const Text('Dont have account?'),
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
-                } , child: Text('Login '))
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
+                } , child: const Text('Login '))
               ],
             )
           ],

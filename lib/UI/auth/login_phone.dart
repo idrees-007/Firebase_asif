@@ -20,15 +20,15 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login with phone number'),
+        title: const Text('Login with phone number'),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          Text('Idrees'),
+
 
           
-          SizedBox(
+          const SizedBox(
 
             height: 50,
           ),
@@ -36,7 +36,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
               controller: phoneNumberController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: '+923000000000',
 
               ),
@@ -44,7 +44,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             ),
 
           ),
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
           Padding(
