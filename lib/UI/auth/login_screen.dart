@@ -4,6 +4,7 @@ import 'package:flutter_asif/UI/auth/post/post_screen.dart';
 import 'package:flutter_asif/util/utils.dart';
 
 import '../../widgets/round_button.dart';
+import 'login_phone.dart';
 import 'sign_up.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -124,7 +125,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
                   } , child: Text('Sign Up'))
                 ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+
+              InkWell(
+                onTap:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginWithPhone()));
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.purple,
+                    )
+                  ),
+                  child: Center(child: Text('Login with phone ')),
+                ),
               )
+
             ],
         ),
       ),
